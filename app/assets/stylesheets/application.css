@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
- h1 {
+ /* h1 {
   color: darkblue;
 }
 
@@ -34,4 +34,4 @@ div{
 
 a:link{
   color: red;
-}
+} */
