@@ -14,6 +14,12 @@ RSpec.describe "shelter show page", type: :feature do
                                   city: "Aurora",
                                   state: "CO",
                                   zip: "80249")
+
+      @review = Review.create(title: "Awesome Shelter",
+                              rating: 5,
+                              content: "They were so helpful!",
+                              picture: "https://image.cnbcfm.com/api/v1/image/105992231-1561667465295gettyimages-521697453.jpeg?v=1561667497",
+                              shelter: @shelter_1)
     end
 
   it "can see the attributes of one shelter" do
@@ -32,9 +38,12 @@ RSpec.describe "shelter show page", type: :feature do
   end
 
     it 'can see all the reviews of the shelter' do
-      expect(page).to have_content(@shelter_1.reviews.title)
-      expect(page).to have_content(@shelter_1.reviews.rating)
-      expect(page).to have_content(@shelter_1.reviews.content)
+
+      visit "/shelters/#{@shelter_1.id}"
+
+      expect(page).to have_content(@review.title)
+      expect(page).to have_content(@review.rating)
+      expect(page).to have_content(@review.content)
     end
   end
 end

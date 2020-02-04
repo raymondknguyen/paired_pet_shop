@@ -3,6 +3,8 @@
 #
 # Examples:
 Shelter.destroy_all
+Review.destroy_all
+Pet.destroy_all
 shelter_1 = Shelter.create(
   name: "Mike's Shelter",
   address: "1331 17th Street",
@@ -18,7 +20,7 @@ shelter_2 = Shelter.create(
   state: "PA",
   zip: 17033
 )
-Pet.destroy_all
+
 Pet.create!(
   image: "https://image.shutterstock.com/image-photo/playing-dogs-garden-260nw-1556131820.jpg",
   name: "Fido",
@@ -47,3 +49,10 @@ Pet.create!(
   adoption_status: "pending",
   shelter: shelter_2
 )
+
+review_1 = Review.create(title: "Awesome Shelter",
+                      rating: 5,
+                      content: "They were so helpful!",
+                      picture: "https://image.cnbcfm.com/api/v1/image/105992231-1561667465295gettyimages-521697453.jpeg?v=1561667497",
+                      shelter: shelter_1
+                    )
