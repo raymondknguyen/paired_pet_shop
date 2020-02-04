@@ -35,3 +35,65 @@ div{
 a:link{
   color: red;
 } */
+
+.container {
+  border-radius: 5px;
+  background-color: #f7d18c;
+  padding: 50px;
+  border: 100px;
+  margin: 100px;
+}
+/* 
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+body {
+  font-family: 'Tangerine', serif;
+  font-size: 20px;
+  text-shadow: 4px 4px 4px #aaa;
+}
+
+body {
+  margin:0;}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+} */

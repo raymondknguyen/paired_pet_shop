@@ -6,6 +6,7 @@ closes #
 ## What did you struggle on to complete?
 
 ## Current Test Suite:
+### Number of Tests:
 ### Test Coverage Percentage: x%
 - [ ] No Tests have been changed
 - [ ] Some Tests have been changed
