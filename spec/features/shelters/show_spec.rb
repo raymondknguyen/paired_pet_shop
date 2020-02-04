@@ -28,5 +28,11 @@ RSpec.describe "shelter show page", type: :feature do
     click_button "Delete Shelter"
 
     expect(page).to_not have_content(shelter_2.address)
+
+    it 'can see all the reviews of the shelter' do
+      expect(page).to have_content(shelter_1.reviews.title)
+      expect(page).to have_content(shelter_1.reviews.rating)
+      expect(page).to have_content(shelter_1.reviews.content)
+    end
   end
 end
