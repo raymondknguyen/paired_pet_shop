@@ -11,6 +11,7 @@ RSpec.describe "shelter new page", type: :feature do
                        )
 
     visit "/shelters"
+    expect(page).to have_link("Create New Shelter")
 
     click_on "Create New Shelter"
     expect(current_path).to eq('/shelters/new')
@@ -20,7 +21,12 @@ RSpec.describe "shelter new page", type: :feature do
     fill_in :city, with: "Aurora"
     fill_in :state, with: "CO"
     fill_in :zip, with: 80014
+
     click_on "Create Shelter"
+
     expect(current_path).to eq('/shelters')
+
+    new_shelter = Shelter.last
+    expect(page).to have_content("Nate's Shelter")
   end
 end
