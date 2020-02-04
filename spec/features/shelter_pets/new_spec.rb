@@ -27,6 +27,14 @@ RSpec.describe 'create pet page', type: :feature do
 
       expect(current_path).to eq("/shelters/#{shelter_1.id}/pets")
       expect(page).to have_content('Frankie')
+
+      new_pet = Pet.last
+
+      expect(current_path).to eq("/shelters/#{shelter_1.id}/pets")
+      expect(page).to have_css("img[src*='#{new_pet.image}']")
+      expect(page).to have_content(new_pet.name)
+      expect(page).to have_content(new_pet.age)
+      expect(page).to have_content(new_pet.sex)
     end
   end
 end
