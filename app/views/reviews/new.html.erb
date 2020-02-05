@@ -1,6 +1,6 @@
 <%= form_tag "/shelters/#{@shelter.id}", method: :post do %>
   <p><%= label_tag :title %>
-  <%= text_field_tag :title, nil, :required => true %>
+  <%= text_field_tag :title %>
   <p><%= label_tag :rating %>
   <%= number_field_tag :rating %></p>
   <p><%= label_tag :content %>

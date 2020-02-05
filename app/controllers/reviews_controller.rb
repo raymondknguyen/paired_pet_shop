@@ -5,9 +5,14 @@ class ReviewsController < ApplicationController
 
   def create
     shelter = Shelter.find(params[:shelter_id])
-    shelter.reviews.create(review_params)
-    
-    redirect_to "/shelters/#{shelter.id}"
+    review = shelter.reviews.create(review_params)
+    if review.save
+      flash[:success] = "Thanks for the Review"
+      redirect_to "/shelters/#{shelter.id}"
+    else
+      flash[:error] = "#{shelter.name} review not created. Missing Field"
+      redirect_to "/shelters/#{shelter.id}/reviews/new"
+    end
   end
 
   private
