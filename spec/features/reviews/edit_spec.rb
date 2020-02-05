@@ -24,7 +24,8 @@ RSpec.describe 'on shelter show page' do
 
     within("#review-#{@review.id}") do
 
-    click_on "Edit Review"
+      click_on "Edit Review"
+
     end
     expect(current_path).to eq("/shelters/#{@shelter_1.id}/reviews/edit")
 
