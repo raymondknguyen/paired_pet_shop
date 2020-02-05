@@ -20,21 +20,23 @@ RSpec.describe "shelter show page", type: :feature do
                               content: "They were so helpful!",
                               picture: "https://image.cnbcfm.com/api/v1/image/105992231-1561667465295gettyimages-521697453.jpeg?v=1561667497",
                               shelter: @shelter_1)
+      @review_2 = Review.create(title: "Good",
+                              rating: 4,
+                              content: "Good!",
+                              shelter: @shelter_2)
+                         
     end
 
-    it "can see the attributes of one shelter" do
-
+    it 'can see all the reviews of this shelter' do
       visit "/shelters/#{@shelter_1.id}"
 
-      expect(page).to have_content(@shelter_1.name)
-      expect(page).to have_content(@shelter_1.address)
-      expect(page).to have_content(@shelter_1.city)
-      expect(page).to have_content(@shelter_1.state)
-      expect(page).to have_content(@shelter_1.zip)
-      expect(page).to have_link("Update Shelter")
-      click_button "Delete Shelter"
+      expect(page).to have_content(@review.title)
+      expect(page).to have_content(@review.rating)
+      expect(page).to have_content(@review.content)
 
-      expect(page).to_not have_content(@shelter_2.address)
+      expect(page).to_not have_content(@review_2.title)
+      expect(page).to_not have_content(@review_2.rating)
+      expect(page).to_not have_content(@review_2.content)
     end
   end
 end
