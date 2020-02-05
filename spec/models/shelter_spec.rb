@@ -8,8 +8,9 @@ RSpec.describe Shelter, type: :model do
     it {should validate_presence_of :state}
     it {should validate_presence_of :zip}
   end
-  
+
   describe "relationships" do
     it {should have_many :pets}
+    it {should have_many :reviews}
   end
 end
