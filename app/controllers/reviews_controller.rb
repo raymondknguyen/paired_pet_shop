@@ -15,6 +15,11 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def edit
+    @shelter = Shelter.find(params[:shelter_id])
+    @review = Review.find(params[:id])
+  end
+
   private
   def review_params
     params.permit(:title, :rating, :content, :picture)

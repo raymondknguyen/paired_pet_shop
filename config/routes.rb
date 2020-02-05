@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   get '/shelters/:shelter_id/reviews/new', to: "reviews#new"
   post '/shelters/:shelter_id', to: 'reviews#create'
+  get '/shelters/:shelter_id/reviews/:id/edit', to: 'reviews#edit'
+  
 
   get '/pets', to: 'pets#index'
   get '/pets/:id', to: 'pets#show'
