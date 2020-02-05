@@ -8,4 +8,12 @@ class Favorite
   def count
     @pets.count
   end
+
+  def add_pet(pet)
+    @pets << pet
+  end
+
+  def includes_pet
+    
+  end
 end
