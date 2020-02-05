@@ -16,5 +16,5 @@
 <p>Rating: <%= review.rating %></p>
 <p>Content: <%= review.content %> </p>
 <p>Picture:</p>
-<%= image_tag(review.picture, height: "100", width: "150", alt: "Reviewer Picture") %>
+<img src ="<%= review.picture %>" alt="No Image Provided" height="100", width="150"> <br>
 <% end %>
