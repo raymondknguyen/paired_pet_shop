@@ -1,8 +1,6 @@
 class FavoritesController < ApplicationController
   def create
     pet = Pet.find(params[:pet_id])
-    # require "pry"; binding.pry
-
     if favorites.pets == []
       favorites.add_pet(pet)
       flash[:success] = "#{pet.name} has been added to your favorites!"
