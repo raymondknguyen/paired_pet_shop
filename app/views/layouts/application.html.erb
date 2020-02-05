@@ -17,6 +17,8 @@
     <ul>
       <li> <%= link_to "Shelter List", "/shelters" %></li>
       <li> <%= link_to "Pets List", "/pets" %></li>
+      <%= require "pry"; binding.pry %>
+      <li> <%= link_to "(#{favorites.count}) Favorited Pets", "/favorites" %></li>
     </ul>
   </div>
     <%= yield %>
