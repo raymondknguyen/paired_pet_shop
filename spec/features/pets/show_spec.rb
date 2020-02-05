@@ -40,4 +40,20 @@ RSpec.describe "pets show page", type: :feature do
       expect(page).to have_content("#{@pet_3.name} has been added to your favorites!")
       expect(page).to have_content('(1) Favorited Pets')
     end
+
+    it "can not add a pet that is already in favorites" do
+      visit "/pets/#{@pet_3.id}"
+
+      click_on("Favorite Pet")
+
+      expect(current_path).to eq("/pets/#{@pet_3.id}")
+      expect(page).to have_content("#{@pet_3.name} has been added to your favorites!")
+      expect(page).to have_content('(1) Favorited Pets')
+
+      click_on("Favorite Pet")
+    
+      expect(current_path).to eq("/pets/#{@pet_3.id}")
+      expect(page).to have_content("#{@pet_3.name} Already Added to Favorites")
+      expect(page).to have_content('(1) Favorited Pets')
+    end
 end

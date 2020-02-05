@@ -13,7 +13,7 @@ class Favorite
     @pets << pet
   end
 
-  def includes_pet
-    
+  def includes_pet?(pet)
+
   end
 end
