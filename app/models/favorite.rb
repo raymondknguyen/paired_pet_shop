@@ -10,12 +10,12 @@ class Favorite
   end
 
   def add_pet(pet)
-    @pets << { :id => pet.id, :image => pet.image, :name => pet.name }
+    @pets << pet.id
   end
 
   def include_pet?(pet)
     @pets.any? do |selected_pet|
-      selected_pet.values.include?(pet[:id])
+      selected_pet == (pet[:id])
     end
   end
 end

@@ -50,7 +50,7 @@ RSpec.describe "pets show page", type: :feature do
     expect(page).to have_content("#{@pet_1.name} has been added to your favorites!")
     expect(page).to have_content('(1) Favorited Pets')
   end
-  it "can only favorite pet once" do
+  xit "can only favorite pet once" do
     visit "/pets/#{@pet_1.id}"
 
     click_button "Favorite Pet"

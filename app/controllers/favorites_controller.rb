@@ -12,5 +12,8 @@ class FavoritesController < ApplicationController
   end
 
   def index
+    @pets = favorites.pets.map do |pet_id|
+      Pet.find(pet_id)
+    end
   end
 end
