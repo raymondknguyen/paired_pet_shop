@@ -16,4 +16,10 @@ class FavoritesController < ApplicationController
       Pet.find(pet_id)
     end
   end
+
+  def destroy
+    pet = Pet.find(params[:pet_id])
+    session[:favorites].delete(pet.id)
+    redirect_to "/pets/#{pet.id}"
+  end
 end
