@@ -41,4 +41,22 @@ RSpec.describe 'on shelter show page' do
     expect(page).to_not have_content("Awesome Shelter")
     expect(page).to_not have_content("They were so helpful!")
   end
+  it 'cant update review missing field' do
+    visit "/shelters/#{@shelter_1.id}"
+
+    within("#review-#{@review.id}") do
+
+      click_on "Edit Review"
+
+    end
+    expect(current_path).to eq("/shelters/#{@shelter_1.id}/reviews/#{@review.id}/edit")
+
+    fill_in :title, with: ""
+    fill_in :rating, with: 1
+    fill_in :content, with: "My dog was sick"
+    click_on 'Submit'
+
+    expect(current_path).to eq("/shelters/#{@shelter_1.id}/reviews/#{@review.id}/edit")
+    expect(page).to have_content("#{@shelter_1.name} review not updated. Missing Field")
+  end
 end

@@ -29,7 +29,7 @@ class ReviewsController < ApplicationController
       redirect_to "/shelters/#{shelter.id}"
     else
       flash[:error] = "#{shelter.name} review not updated. Missing Field"
-      redirect_to "/shelters/#{shelter.id}/reviews/new"
+      redirect_to "/shelters/#{shelter.id}/reviews/#{review.id}/edit"
     end
   end
 
