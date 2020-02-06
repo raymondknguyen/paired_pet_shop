@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe "shelters index page", type: :feature do
   describe "as a a visitor do"
     before(:each) do
+      Shelter.destroy_all
       @shelter_1 = Shelter.create(
                          name: "Mike's Shelter",
                          address: "1331 17th Street",

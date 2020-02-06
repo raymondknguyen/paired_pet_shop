@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe "pets show page", type: :feature do
   describe "as a visitor" do
     before do
+      Shelter.destroy_all
+      Pet.destroy_all
       @shelter_1 = Shelter.create!(
         name: "Meg's Shelter",
         address: "150 Main Street",
@@ -33,7 +35,7 @@ RSpec.describe "pets show page", type: :feature do
       click_button "Delete Pet"
 
       expect(current_path).to eq('/pets')
-      
+
       expect(page).to_not have_css("img[src*='#{@pet_1.image}']")
       expect(page).to_not have_content(@pet_1.name)
       expect(page).to_not have_content(@pet_1.age)
