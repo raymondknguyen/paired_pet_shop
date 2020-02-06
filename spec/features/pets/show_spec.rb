@@ -49,17 +49,11 @@ RSpec.describe "pets show page", type: :feature do
       expect(current_path).to eq("/pets/#{@pet_1.id}")
       expect(page).to have_content("#{@pet_1.name} has been added to your favorites!")
       expect(page).to have_content('(1) Favorited Pets')
-
-      click_on("Favorite Pet")
-    
-      expect(current_path).to eq("/pets/#{@pet_1.id}")
-      expect(page).to have_content("#{@pet_1.name} Already Added to Favorites")
-      expect(page).to have_content('(1) Favorited Pets')
     end
     it "can only favorite pet once" do
       visit "/pets/#{@pet_1.id}"
 
-      click_on "Favorite Pet"
+      click_button "Favorite Pet"
 
       expect(current_path).to eq("/pets/#{@pet_1.id}")
 
