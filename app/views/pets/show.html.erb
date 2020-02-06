@@ -12,7 +12,7 @@
   <%= button_to 'Delete Pet', "/pets/#{@pet.id}", method: :delete %>
   <br>
   <% if favorites.include_pet?(@pet) %>
-  <%= button_to 'Remove Pet From Favorite', "/favorites/#{@pet.id}" %>
+    <%= link_to 'Remove Pet From Favorites', "/favorites/#{@pet.id}", method: :delete %>
   <% else %>
     <%= button_to 'Favorite Pet', "/favorites/#{@pet.id}" %>
   <% end %>
