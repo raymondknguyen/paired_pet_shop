@@ -61,7 +61,7 @@ RSpec.describe "pets show page", type: :feature do
 
       click_on "Favorite Pet"
 
-      expect(current_path).to eq("/pets/#{pet_1.id}")
+      expect(current_path).to eq("/pets/#{@pet_1.id}")
 
       expect(page).to_not have_button("Favorite Pet")
     end
