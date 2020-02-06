@@ -1,0 +1,9 @@
+<center>
+  <h1>Your Favorite Pets</h1>
+  <% favorites.pets.each do |pet| %>
+    <h3><%= link_to "#{pet["name"]}", "/pets/#{pet["id"]}" %> </h3>
+    <br><br><br>
+    <img src ="<%= pet["image"] %>" alt="Dog Picture" height="400", width="500">
+    <br><br><br>
+  <% end %>
+</center>
