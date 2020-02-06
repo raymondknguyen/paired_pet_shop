@@ -48,4 +48,38 @@ RSpec.describe "favorites index page", type: :feature do
       expect(page).to have_link("#{@pet_3.name}")
       expect(page).to have_css("img[src*='#{@pet_3.image}']")
   end
+
+  it "can remove a pet from the favorites page" do
+    visit "/pets/#{@pet_1.id}"
+    click_on "Favorite Pet"
+
+    visit "/pets/#{@pet_2.id}"
+    click_on "Favorite Pet"
+
+    visit "/pets/#{@pet_3.id}"
+    click_on "Favorite Pet"
+
+    visit '/favorites'
+    expect(page).to have_content("(3) Favorited Pets")
+
+    within("#favoritepet-#{@pet_1.id}") do
+      expect(page).to have_button("Remove Pet From Favorites")
+      click_on "Remove Pet From Favorites"
+    end
+
+    expect(current_path).to eq('/favorites')
+    expect(page).to_not have_link("#{@pet_1.name}")
+    expect(page).to_not have_css("img[src*='#{@pet_1.image}']")
+    expect(page).to have_content("(2) Favorited Pets")
+
+    within("#favoritepet-#{@pet_2.id}") do
+      expect(page).to have_button("Remove Pet From Favorites")
+      click_on "Remove Pet From Favorites"
+    end
+
+    expect(current_path).to eq('/favorites')
+    expect(page).to_not have_link("#{@pet_2.name}")
+    expect(page).to_not have_css("img[src*='#{@pet_2.image}']")
+    expect(page).to have_content("(1) Favorited Pets")
+  end
 end
