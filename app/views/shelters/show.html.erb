@@ -1,24 +1,26 @@
-<h2><%= @shelter.name %></h2>
-<h4><%= @shelter.address %></h4>
-<h4><%= @shelter.city %></h4>
-<h4><%= @shelter.state %></h4>
-<h4><%= @shelter.zip %></h4>
-<%= link_to 'Update Shelter', "/shelters/#{@shelter.id}/edit" %>
-<br><br>
-<%= link_to "All Shelter's Pets", "/shelters/#{@shelter.id}/pets"%>
-<br><br><br>
-<%= button_to 'Delete Shelter', "/shelters/#{@shelter.id}", method: :delete %>
+<center>
+  <h2><%= @shelter.name %></h2>
+  <h4><%= @shelter.address %></h4>
+  <h4><%= @shelter.city %></h4>
+  <h4><%= @shelter.state %></h4>
+  <h4><%= @shelter.zip %></h4>
+  <%= link_to 'Update Shelter', "/shelters/#{@shelter.id}/edit" %>
+  <br><br>
+  <%= link_to "All Shelter's Pets", "/shelters/#{@shelter.id}/pets"%>
+  <br><br><br>
+  <%= button_to 'Delete Shelter', "/shelters/#{@shelter.id}", method: :delete %>
 
-<h3>Reviews:</h3>
-<%= link_to "Add New Review", "/shelters/#{@shelter.id}/reviews/new" %>
-<% @shelter.reviews.each do |review| %>
-<section class="grid-review" id="review-<%=review.id%>">
-<p>Title: <%= review.title %> </p>
-<p>Rating: <%= review.rating %></p>
-<p>Content: <%= review.content %> </p>
-<p>Picture:</p>
-<img src ="<%= review.picture %>" alt="No Image Provided" height="100", width="150"> <br>
-<%= link_to "Edit Review", "/shelters/#{@shelter.id}/reviews/#{review.id}/edit"%> <br><br>
-<%= button_to 'Delete Review', "/shelters/#{@shelter.id}/reviews/#{review.id}", method: :delete %>
-</section>
-<% end %>
+  <h3>Reviews:</h3>
+  <%= link_to "Add New Review", "/shelters/#{@shelter.id}/reviews/new" %>
+  <% @shelter.reviews.each do |review| %>
+    <section class="grid-review" id="review-<%=review.id%>">
+      <p>Title: <%= review.title %> </p>
+      <p>Rating: <%= review.rating %></p>
+      <p>Content: <%= review.content %> </p>
+      <p>Picture:</p>
+      <img src ="<%= review.picture %>" alt="No Image Provided" height="100", width="150"> <br>
+      <%= link_to "Edit Review", "/shelters/#{@shelter.id}/reviews/#{review.id}/edit"%> <br><br>
+      <%= button_to 'Delete Review', "/shelters/#{@shelter.id}/reviews/#{review.id}", method: :delete %>
+    </section>
+  <% end %>
+</center>
