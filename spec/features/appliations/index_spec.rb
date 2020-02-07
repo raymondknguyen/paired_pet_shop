@@ -32,7 +32,7 @@ RSpec.describe "applying for a pet index" do
 
     click_on "Adpot My Favorite Pets"
 
-    expect(current_path).to eq('/favorites/application/new')
+    expect(current_path).to eq('/applications/new')
 
     fill_in :name, with: "Nathan Keller"
     fill_in :address, with: "1234 Main St"
