@@ -87,6 +87,22 @@ RSpec.describe "favorites index page", type: :feature do
     visit "/favorites"
     expect(page).to have_content("(0) Favorited Pets")
     expect(page).to have_content("You have no pets favorited!")
-    
+  end
+
+  it "can remove all Favorites from Favorites Page" do
+    visit "/pets/#{@pet_1.id}"
+    click_on "Favorite Pet"
+
+    visit "/pets/#{@pet_2.id}"
+    click_on "Favorite Pet"
+
+    visit '/favorites'
+
+    expect(page).to have_button("Remove All Pets From Favorites")
+    click_on "Remove All Pets From Favorites"
+
+    expect(current_path).to eq('/favorites')
+    expect(page).to have_content("You have no pets favorited!")
+    expect(page).to have_content("(0) Favorited Pets")
   end
 end
