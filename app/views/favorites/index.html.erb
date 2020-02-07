@@ -1,6 +1,9 @@
 <center>
+<% if @pets == [] %>
+  <h1>You have no pets favorited!</h1>
+<% else %>
   <h1>Your Favorite Pets</h1>
-
+<% end %>
   <% @pets.each do |pet| %>
   <section id = "favoritepet-<%=pet.id %>">
     <h3><%= link_to "#{pet.name}", "/pets/#{pet.id}" %> </h3><
