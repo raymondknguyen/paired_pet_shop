@@ -6,11 +6,13 @@
 <% end %>
   <% @pets.each do |pet| %>
   <section id = "favoritepet-<%=pet.id %>">
-    <h3><%= link_to "#{pet.name}", "/pets/#{pet.id}" %> </h3><
+    <h3><%= link_to "#{pet.name}", "/pets/#{pet.id}" %> </h3>
     <br><br><br>
     <img src ="<%= pet.image %>" alt="Dog Picture" height="400", width="500">
-    <br><
+    <br>
     <%= button_to "Remove Pet From Favorites", "/favorites/#{pet.id}", method: :delete %>
   </section>
   <% end %>
+  <br><br>
+  <%= link_to "Remove All Pets From Favorites", '/favorites', action: :remove_all, method: :delete %>
 </center>
