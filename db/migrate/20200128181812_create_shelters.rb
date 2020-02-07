@@ -7,7 +7,7 @@ class CreateShelters < ActiveRecord::Migration[5.1]
       t.string :state
       t.string :zip
 
-      t.timestamp
+      t.timestamps
     end
   end
 end

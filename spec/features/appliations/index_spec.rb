@@ -30,7 +30,7 @@ RSpec.describe "applying for a pet index" do
 
     visit '/favorites'
 
-    click_on "Adpot My Favorite Pets"
+    click_on "Adopt My Favorite Pets"
 
     expect(current_path).to eq('/applications/new')
 
