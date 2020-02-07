@@ -13,6 +13,6 @@
     <%= button_to "Remove Pet From Favorites", "/favorites/#{pet.id}", method: :delete %>
   </section>
   <% end %>
-
-  <%= button_to "Remove All Pets From Favorites", '/favorites', action: :remove_all, method: :delete %>
+  <br><br>
+  <%= link_to "Remove All Pets From Favorites", '/favorites', action: :remove_all, method: :delete %>
 </center>

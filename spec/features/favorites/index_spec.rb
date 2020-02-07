@@ -98,7 +98,7 @@ RSpec.describe "favorites index page", type: :feature do
 
     visit '/favorites'
 
-    expect(page).to have_button("Remove All Pets From Favorites")
+    expect(page).to have_link("Remove All Pets From Favorites")
     click_on "Remove All Pets From Favorites"
 
     expect(current_path).to eq('/favorites')
