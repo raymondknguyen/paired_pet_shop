@@ -129,7 +129,7 @@ RSpec.describe "favorites index page", type: :feature do
     fill_in :description_why, with: "I LOVE DOGS"
 
     click_on "Submit Application"
-
+    
     visit '/favorites'
 
     expect(page).to have_content("All Pet Appliactions")
