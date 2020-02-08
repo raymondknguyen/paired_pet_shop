@@ -12,10 +12,15 @@ class ApplicationsController < ApplicationController
   end
 
   def create
-    Application.create(application_params)
-    flash[:success] = "Application Submitted Successfully"
-    session[:favorites] = []
-    redirect_to '/favorites'
+    application = Application.create(application_params)
+    if application.save
+      flash[:success] = "Application Submitted Successfully"
+      session[:favorites] = []
+      redirect_to '/favorites'
+    else
+      flash[:error] = "Error, Missing Fields"
+      redirect_to "/applications/new"
+    end
   end
 
   private
