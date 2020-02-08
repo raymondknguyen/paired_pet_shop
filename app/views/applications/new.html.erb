@@ -2,8 +2,13 @@
 <h1>Apply for New Pets</h1>
 
   <%= form_tag "/applications/", method: :post do %>
-    <p> <%= label_tag "My Favorite Pets" %> <br>
-    <%= select_tag "Favorite Pets", options_for_select(@all_favs), multiple: true %> </p>
+  <h4> Who Would you like to adopt today? </h4>
+    <% @all_favs.each do |favorite| %>
+    <section id="favorite-<%= favorite.id %>">
+      <%= label_tag favorite.name %>
+      <%= check_box_tag :adopt_pets, favorite.id %>
+    </section>
+  <% end %>
     <p><%= label_tag :name %>
     <%= text_field_tag :name %>
     <p><%= label_tag :address %>

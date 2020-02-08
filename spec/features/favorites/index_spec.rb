@@ -105,4 +105,35 @@ RSpec.describe "favorites index page", type: :feature do
     expect(page).to have_content("You have no pets favorited!")
     expect(page).to have_content("(0) Favorited Pets")
   end
+
+  it "can see a section on the page that has all of the pets that have an applicaiton" do
+    visit "/pets/#{@pet_1.id}"
+    click_on "Favorite Pet"
+
+    visit '/favorites'
+
+    click_on "Adopt My Favorite Pets"
+
+    expect(current_path).to eq('/applications/new')
+
+    within "#favorite-#{@pet_1.id}" do
+      check :adopt_pets
+    end
+
+    fill_in :name, with: "Nathan Keller"
+    fill_in :address, with: "1234 Main St"
+    fill_in :city, with: "Arvada"
+    fill_in :state, with: "CO"
+    fill_in :zip, with: 80003
+    fill_in :phone_number, with: "303-725-6266"
+    fill_in :description_why, with: "I LOVE DOGS"
+
+    click_on "Submit Application"
+
+    visit '/favorites'
+
+    expect(page).to have_content("All Pet Appliactions")
+    expect(page).to have_link(@pet_1.name)
+    expect(page).to_not have_link(@pet_2.name)
+  end
 end

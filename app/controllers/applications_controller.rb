@@ -1,13 +1,10 @@
 class ApplicationsController < ApplicationController
   def new
     pets = Pet.all
-    matches = pets.find_all do |pet|
+    @all_favs = pets.find_all do |pet|
       session[:favorites].find do |favorite|
         pet.id == favorite
       end
-    end
-    @all_favs = matches.map do |fav|
-      fav.name
     end
   end
 
