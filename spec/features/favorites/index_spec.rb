@@ -132,7 +132,6 @@ RSpec.describe "favorites index page", type: :feature do
 
     visit '/favorites'
 
-    require "pry"; binding.pry
     expect(page).to have_content("All Pet Appliactions")
     expect(page).to have_link(@pet_1.name)
     expect(page).to_not have_link(@pet_2.name)
