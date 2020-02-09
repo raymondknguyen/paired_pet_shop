@@ -17,8 +17,14 @@
   <% end %>
   <br><br>
 
-  <h2>All Pet Appliactions</h2>
-
+<section>
+  <h2>All Pet Applications</h2>
+  <% @pets.each do |pet|  %>
+    <% if pet.applications.include?(pet) == true %>
+    <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
+    <% end %>
+  <% end %>
+</section>
 
 
 
