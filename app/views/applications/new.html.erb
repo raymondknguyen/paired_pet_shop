@@ -1,0 +1,29 @@
+<center>
+<h1>Apply for New Pets</h1>
+
+  <%= form_tag "/applications/", method: :post do %>
+  <h4> Who Would you like to adopt today? </h4>
+    <% @all_favs.each do |favorite| %>
+    <section id="favorite-<%= favorite.id %>">
+      <%= label_tag favorite.name %>
+      <%= check_box_tag :adopt_pets, favorite.id %>
+    </section>
+  <% end %>
+    <p><%= label_tag :name %>
+    <%= text_field_tag :name %>
+    <p><%= label_tag :address %>
+    <%= text_field_tag :address %></p>
+    <p><%= label_tag :city %>
+    <%= text_field_tag :city %></p>
+    <p><%= label_tag :state %>
+    <%= text_field_tag :state %></p>
+    <p><%= label_tag :zip %>
+    <%= text_field_tag :zip %></p>
+    <p><%= label_tag :phone_number %>
+    <%= text_field_tag :phone_number %></p>
+    <p><%= label_tag "Description of why I'd make a good home for this/these pet(s)" %> <br>
+    <%= text_field_tag :description_why %></p>
+
+  <%= submit_tag 'Submit Application' %>
+  <% end %>
+</center>
