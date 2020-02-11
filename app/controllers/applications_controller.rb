@@ -39,6 +39,14 @@ class ApplicationsController < ApplicationController
     @application = Application.find(params[:id])
   end
 
+  def approve_pet
+    pet = Pet.find(params[:pet_id])
+    applicant = Application.find(params[:application_id])
+    pet.update( {adoption_status: "Approved"} )
+    flash[:success] = "On hold for #{applicant.name} "
+    redirect_to "/pets/#{pet.id}"
+  end 
+
   private
 
     def application_params
