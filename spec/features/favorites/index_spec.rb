@@ -33,6 +33,11 @@ RSpec.describe "favorites index page", type: :feature do
         shelter: @shelter_2
       )
     end
+
+    after do
+      PetApplication.destroy_all
+    end
+
     it "can see favorited pets" do
       visit "/pets/#{@pet_1.id}"
       click_on "Favorite Pet"
@@ -110,6 +115,9 @@ RSpec.describe "favorites index page", type: :feature do
     visit "/pets/#{@pet_1.id}"
     click_on "Favorite Pet"
 
+    visit "/pets/#{@pet_2.id}"
+    click_on "Favorite Pet"
+
     visit '/favorites'
 
     click_on "Adopt My Favorite Pets"
@@ -117,7 +125,11 @@ RSpec.describe "favorites index page", type: :feature do
     expect(current_path).to eq('/applications/new')
 
     within "#favorite-#{@pet_1.id}" do
-      check :adopt_pets
+      check "adopt_pets[]"
+    end
+
+    within "#favorite-#{@pet_2.id}" do
+      check "adopt_pets[]"
     end
 
     fill_in :name, with: "Nathan Keller"
@@ -127,13 +139,12 @@ RSpec.describe "favorites index page", type: :feature do
     fill_in :zip, with: 80003
     fill_in :phone_number, with: "303-725-6266"
     fill_in :description_why, with: "I LOVE DOGS"
-
     click_on "Submit Application"
-    
+
     visit '/favorites'
 
-    expect(page).to have_content("All Pet Appliactions")
+    expect(page).to have_content("All Pet Applications")
     expect(page).to have_link(@pet_1.name)
-    expect(page).to_not have_link(@pet_2.name)
+    expect(page).to have_link(@pet_2.name)
   end
 end
