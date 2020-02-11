@@ -37,4 +37,35 @@ RSpec.describe "pet index page", type: :feature do
     expect(page).to have_link("Update Pet")
     expect(page).to have_button("Delete Pet")
   end
+  it "has name link for everytime you see pet" do
+    shelter_1 = Shelter.create!(
+      name: "Mike's Shelter",
+      address: "1331 17th Street",
+      city: "Denver",
+      state: "CO",
+      zip: 80202
+    )
+
+    pet_1 = Pet.create(
+      image: "https://image.shutterstock.com/image-photo/playing-dogs-garden-260nw-1556131820.jpg",
+      name: "Fido",
+      description: "Silly",
+      age: 2,
+      sex: "Female",
+      shelter: shelter_1
+    )
+    visit '/pets'
+
+    expect(page).to have_link(pet_1.name)
+
+    visit "/pets/#{pet_1.id}"
+    
+    expect(page).to have_link(pet_1.name)
+
+    click_on "Favorite Pet"
+
+    visit "/favorites"
+
+    expect(page).to have_link(pet_1.name)
+  end
 end
