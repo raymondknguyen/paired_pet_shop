@@ -65,7 +65,7 @@ RSpec.describe "application show page", type: :feature do
       expect(current_path).to eq("/pets/#{@pet_1.id}")
     end
 
-    it 'will show me a link to approve the application for that pet' do
+    xit 'will show me a link to approve the application for that pet' do
 
         visit "/applications/#{@ray.id}"
 

@@ -17,15 +17,15 @@ class ApplicationsController < ApplicationController
     application = Application.new(application_params)
     if params[:adopt_pets] != nil
       params[:adopt_pets].each do |pet_id|
-        x = Pet.find(pet_id.to_i)
-        x.applications.create(application_params)
+        pet = Pet.find(pet_id.to_i)
+      pet.applications.create(application_params)
       end
       if application.save
         flash[:success] = "Application Submitted Successfully"
         params[:adopt_pets].each do |pet|
           session[:favorites].delete(pet.to_i)
-          y = Pet.find(pet.to_i)
-          y.update( {adoption_status: "pending"} )
+          pet = Pet.find(pet.to_i)
+          pet.update( {adoption_status: "pending"} )
         end
         redirect_to '/favorites'
       end
