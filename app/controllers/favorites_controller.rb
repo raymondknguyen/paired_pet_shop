@@ -15,7 +15,7 @@ class FavoritesController < ApplicationController
     @pets = favorites.pets.map do |pet_id|
       Pet.find(pet_id)
     end
-    @all_pet = Pet.all
+    @pending_pets = Pet.all.find_all {|pet| pet.adoption_status == "pending" }
   end
 
   def destroy
