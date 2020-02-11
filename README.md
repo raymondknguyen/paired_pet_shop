@@ -1,5 +1,12 @@
+# Raymond Nguyen & Nathan Keller
+
 # Adopt Don't Shop Paired Project
 BE Mod 2 Week 2/3 Pair Project
+In this project Adopt Dont Shop, we handled; 
+* Manually constructed a database with application interaction.
+* Creating quieries with PostGresSQL and ActiveRecord.
+* Utilizes resource relationships such as one to many and many to many with a rails framework.  
+* Commit history shows Test Driven Development through RSpec; Cabybara, Shoulda Matchers, Launchy, Pry, SimpleCov.
 
 ## Background and Description
 
