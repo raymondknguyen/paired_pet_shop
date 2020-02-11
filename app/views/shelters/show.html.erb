@@ -4,6 +4,13 @@
   <h4><%= @shelter.city %></h4>
   <h4><%= @shelter.state %></h4>
   <h4><%= @shelter.zip %></h4>
+
+  <h3>Shelter statistics</h3>
+  <p> <h4> <%="#{@shelter.pet_count} Pets in shelter"%> </h4> </p>
+  <p> <%="#{@shelter.pet_count} Pets in shelter"%> </p>
+  <h4> <%= "Average shelter rating of #{@shelter.average_rating}" %> </h4>
+  <h4> <%= "#{@shelter.application_count} Application(s) on file for shelter" %> </h4>
+
   <%= link_to 'Update Shelter', "/shelters/#{@shelter.id}/edit" %>
   <br><br>
   <%= link_to "All Shelter's Pets", "/shelters/#{@shelter.id}/pets"%>

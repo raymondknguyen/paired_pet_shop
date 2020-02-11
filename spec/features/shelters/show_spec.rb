@@ -31,7 +31,7 @@ RSpec.describe "shelter show page", type: :feature do
       expect(page).to_not have_content(@shelter_2.address)
     end
 
-    xit "can see statistics for that shelter" do
+    it "can see statistics for that shelter" do
 
       visit "/shelters/#{@shelter_1.id}"
 
@@ -65,23 +65,28 @@ RSpec.describe "shelter show page", type: :feature do
                               content: "So bad",
                               shelter: @shelter_1)
 
-      @shelter_1.pets.uniq do |pet|
-        if pet.adoption_status = "approved"
-          pet.applications.create(name: "Ray Nguyen",
-                address: "123 Fake st.",
-                city: "Denver",
-                state: "Colorado",
-                zip: "80230",
-                phone_number: "1234567890",
-                description_why: "Because why not")
-        end
-      end
-      require "pry"; binding.pry
+      pet_2.applications.create!(
+        name: "Ray Nguyen",
+        address: "123 Fake st.",
+        city: "Denver",
+        state: "Colorado",
+        zip: "80230",
+        phone_number: "1234567890",
+        description_why: "Because why not")
+
+      pet_2.applications.create!(
+        name: "Nathan",
+        address: "456 Main St",
+        city: "Arvada",
+        state: "Colorado",
+        zip: "80003",
+        phone_number: "267385900",
+        description_why: "Because dogs are awesome")
 
       expect(page).to have_content("Shelter statistics")
-      expect(page).to have_content("2 Pets in shelter")
-      expect(page).to have_content("Average shelter rating of 3")
-      expect(page).to have_content("2 Application(s) on file for shelter")
+      expect(@shelter_1.pet_count).to eq(2)
+      expect(@shelter_1.average_rating).to eq(3.0)
+      expect(@shelter_1.application_count).to eq(2)
     end
   end
 end

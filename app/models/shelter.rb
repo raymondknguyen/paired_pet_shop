@@ -12,4 +12,10 @@ class Shelter < ApplicationRecord
     reviews.average(:rating)
   end
 
+  def application_count
+    pets.sum do |pet|
+      pet.applications.count
+    end
+  end
+
 end
