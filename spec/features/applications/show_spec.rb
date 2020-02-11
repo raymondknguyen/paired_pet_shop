@@ -58,6 +58,13 @@ RSpec.describe "application show page", type: :feature do
       expect(page).to have_content(@ray.zip)
       expect(page).to have_content(@ray.phone_number)
       expect(page).to have_content(@ray.description_why)
+      expect(page).to have_link(@pet_1.name)
+
+      click_link @pet_1.name
+
+      expect(current_path).to eq("/pets/#{@pet_1.id}")
     end
   end
 end
+
+

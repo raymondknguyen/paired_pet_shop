@@ -6,4 +6,7 @@
 <p> Phone Number: <%= @application.phone_number %>
 <p> Why: <%= @application.description_why%> <br> </p>
 
+<% @application.pets.each do |pet| %>
+<%=link_to pet.name, "/pets/#{pet.id}" %>
+<% end %>
 
