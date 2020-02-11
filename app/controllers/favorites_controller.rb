@@ -15,6 +15,7 @@ class FavoritesController < ApplicationController
     @pets = favorites.pets.map do |pet_id|
       Pet.find(pet_id)
     end
+    @all_pet = Pet.all
   end
 
   def destroy

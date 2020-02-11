@@ -1,5 +1,5 @@
 <center>
-<% if @pets == [] %>
+<% if session[:favorites] == [] %>
   <h1>You have no pets favorited!</h1>
 <% else %>
   <h1>Your Favorite Pets</h1>
@@ -19,14 +19,12 @@
 
 <section>
   <h2>All Pet Applications</h2>
-  <% @pets.each do |pet|  %>
-    <% if pet.applications.include?(pet) == true %>
-    <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
-    <% end %>
-  <% end %>
+<% pending_pets = @all_pet.find_all {|pet| pet.adoption_status == "pending" }%>
+<% pending_pets.each do |pet| %>
+    <%= link_to "#{pet.name}", "/pets/#{pet.id}" %> <br>
+<% end %>
 </section>
 
-
-
+  <br><br><br>
   <%= link_to "Remove All Pets From Favorites", '/favorites', action: :remove_all, method: :delete %>
 </center>

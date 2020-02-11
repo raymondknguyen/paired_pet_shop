@@ -3,8 +3,10 @@ require 'rails_helper'
 RSpec.describe "pets show page", type: :feature do
   describe "as a visitor" do
     before do
+      PetApplication.destroy_all
       Shelter.destroy_all
       Pet.destroy_all
+      Application.destroy_all
       @shelter_1 = Shelter.create!(
         name: "Meg's Shelter",
         address: "150 Main Street",

@@ -1,6 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe "applying for a pet index" do
+  before :each do
+    PetApplication.destroy_all
+    Shelter.destroy_all
+    Pet.destroy_all
+    Application.destroy_all
+  end
+
   it 'lets me apply for a pet that i have favorited' do
     shelter_1 = Shelter.create!(
       name: "Mike's Shelter",
@@ -26,13 +33,19 @@ RSpec.describe "applying for a pet index" do
       sex: "Male",
       shelter: shelter_1
     )
-    favorites = Favorite.new([pet_1,pet_2])
+    visit "/pets/#{pet_1.id}"
+    click_on "Favorite Pet"
 
     visit '/favorites'
 
     click_on "Adopt My Favorite Pets"
 
     expect(current_path).to eq('/applications/new')
+
+    within "#favorite-#{pet_1.id}" do
+      check "adopt_pets[]"
+    end
+
 
     fill_in :name, with: "Nathan Keller"
     fill_in :address, with: "1234 Main St"
