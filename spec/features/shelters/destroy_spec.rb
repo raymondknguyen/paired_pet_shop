@@ -42,5 +42,22 @@ require "rails_helper"
       expect(page).to have_content(@shelter_1.name)
       expect(page). to have_content("Can not delete shelter with pending pet application")
     end
+
+    it "deletes all reviews when a shelter has been deleted" do
+      review_1 = Review.create(title: "Awesome Shelter",
+                            rating: 5,
+                            content: "They were so helpful!",
+                            picture: "https://image.cnbcfm.com/api/v1/image/105992231-1561667465295gettyimages-521697453.jpeg?v=1561667497",
+                            shelter: @shelter_1
+                          )
+      visit "/shelters/#{@shelter_1.id}"
+
+      expect(page).to have_button("Delete Shelter")
+      save_and_open_page
+      click_on "Delete Shelter"
+
+      expect(current_path).to eq("/shelters")
+      expect(page).to_not have_content(@shelter_1.name)
+    end
   end
 end
