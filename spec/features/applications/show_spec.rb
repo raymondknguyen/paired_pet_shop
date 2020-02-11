@@ -37,6 +37,15 @@ RSpec.describe "application show page", type: :feature do
         adoption_status: "open",
         shelter: @shelter_2
       )
+       @pet_4 = Pet.create!(
+        image: "https://image.shutterstock.com/image-photo/dog-headshot-on-yellow-background-260nw-324936848.jpg",
+        name: "Lucii",
+        description: "Adorable",
+        age: 4,
+        sex: "Male",
+        adoption_status: "Approved",
+        shelter: @shelter_2
+      )
       @ray = @pet_1.applications.create!(name: "Ray Nguyen",
             address: "123 Fake st.",
             city: "Denver",
@@ -54,6 +63,7 @@ RSpec.describe "application show page", type: :feature do
               description_why: "Because why not")
 
               PetApplication.create(pet: @pet_3, application: @billy)
+              PetApplication.create(pet: @pet_4, application: @billy)
 
             end
 
@@ -108,6 +118,14 @@ RSpec.describe "application show page", type: :feature do
 
       expect(@pet_3.adoption_status).to eq("Approved")
       expect(@pet_2.adoption_status).to eq("Approved")
+    end
+
+    it "cant approve pet thats already been approved" do
+      visit "/applications/#{@billy.id}"
+
+      within "#favorite-#{@pet_4.id}" do
+        expect(page).to_not have_link("Approved")
+      end
     end
   end
 end
