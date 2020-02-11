@@ -43,12 +43,54 @@ Pet.create!(
 Pet.create!(
   image: "https://image.shutterstock.com/image-photo/dog-headshot-on-yellow-background-260nw-324936848.jpg",
   name: "Sammy",
-  description: "Adorable",
+  description: "Weird",
   age: 4,
   sex: "Male",
   adoption_status: "pending",
   shelter: shelter_2
 )
+lucii = Pet.create!(
+  image: "https://static.boredpanda.com/blog/wp-content/uploads/2020/01/funny-dog-teeth-toofers-3-5e255a95cd31e__700.jpg",
+  name: "Lucii",
+  description: "Cute",
+  age: 4,
+  sex: "Male",
+  adoption_status: "pending",
+  shelter: shelter_2
+)
+amel = Pet.create!(
+  image: "https://cdn.pixabay.com/photo/2016/12/13/05/15/puppy-1903313__340.jpg",
+  name: "Amel",
+  description: "Playful",
+  age: 4,
+  sex: "Male",
+  adoption_status: "pending",
+  shelter: shelter_2
+)
+homer = Pet.create!(
+  image: "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2018/01/12201051/cute-puppy-body-image.jpg",
+  name: "Homer",
+  description: "Inhuman",
+  age: 4,
+  sex: "Male",
+  adoption_status: "pending",
+  shelter: shelter_2
+)
+
+ray = Application.create(name: "Ray Nguyen",
+            address: "123 Fake st.",
+            city: "Denver",
+            state: "Colorado",
+            zip: "80230",
+            phone_number: "1234567890",
+            description_why: "Because why not")
+
+PetApplication.create(pet: lucii, application: ray)
+PetApplication.create(pet: amel, application: ray)
+PetApplication.create(pet: homer, application: ray)
+
+
+
 
 review_1 = Review.create(title: "Awesome Shelter",
                       rating: 5,

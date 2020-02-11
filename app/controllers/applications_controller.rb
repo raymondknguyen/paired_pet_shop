@@ -47,6 +47,14 @@ class ApplicationsController < ApplicationController
     redirect_to "/pets/#{pet.id}"
   end 
 
+  def approve_all
+    params[:favorite_pets].each do |pet_id|
+      pet = Pet.find(pet_id)
+      pet.update( {adoption_status: "Approved"} )
+    end
+    redirect_to "/shelters"
+  end
+
   private
 
     def application_params
