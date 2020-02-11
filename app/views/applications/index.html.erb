@@ -1,0 +1,9 @@
+<% if @pet %>
+	<% @pet.applications.each do |application| %>
+	<%= link_to "#{application.name}", "/applications/#{application.id}"%>
+	<% end %>
+<% end %>
+
+<% if @pet.applications == [] %>
+<p>No Applications For <%=@pet.name%></p>
+<% end %>

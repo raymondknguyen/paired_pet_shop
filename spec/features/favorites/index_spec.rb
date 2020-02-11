@@ -69,6 +69,7 @@ RSpec.describe "favorites index page", type: :feature do
     click_on "Favorite Pet"
 
     visit '/favorites'
+
     expect(page).to have_content("(3) Favorited Pets")
 
     within("#favoritepet-#{@pet_1.id}") do
@@ -79,7 +80,7 @@ RSpec.describe "favorites index page", type: :feature do
 
     expect(current_path).to eq('/favorites')
 
-    within(".favoritepets") do
+    within("#favoritepets") do
       expect(page).to_not have_link("#{@pet_1.name}")
     end
 
@@ -92,7 +93,7 @@ RSpec.describe "favorites index page", type: :feature do
     end
 
     expect(current_path).to eq('/favorites')
-    within(".favoritepets") do
+    within("#favoritepets") do
       expect(page).to_not have_link("#{@pet_2.name}")
     end
 
