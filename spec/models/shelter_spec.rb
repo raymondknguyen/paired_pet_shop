@@ -54,12 +54,12 @@ RSpec.describe Shelter, type: :model do
                             rating: 5,
                             content: "They were so helpful!",
                             picture: "https://image.cnbcfm.com/api/v1/image/105992231-1561667465295gettyimages-521697453.jpeg?v=1561667497",
-                            shelter: @shelter_1)
+                            shelter: shelter_1)
 
     review_2 = Review.create(title: "Bad",
                             rating: 1,
                             content: "So bad",
-                            shelter: @shelter_1)
+                            shelter: shelter_1)
 
       expect(shelter_1.average_rating).to eq(3)
   end
