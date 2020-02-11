@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.describe "pets show page", type: :feature do
   before do
+    PetApplication.destroy_all
+    Pet.destroy_all
+    Shelter.destroy_all
+
     @shelter_1 = Shelter.create!(
       name: "Meg's Shelter",
       address: "150 Main Street",
@@ -41,7 +45,7 @@ RSpec.describe "pets show page", type: :feature do
             zip: "80230",
             phone_number: "1234567890",
             description_why: "Because why not")
-    
+
   end
   it "can see the attributes for one pet" do
     visit "/pets/#{@pet_1.id}"
@@ -78,7 +82,7 @@ RSpec.describe "pets show page", type: :feature do
 
     expect(page).to have_content("(0) Favorited Pets")
   end
-  
+
   it "can see a list of all the names of the applicants for this pet" do
     visit "/pets/#{@pet_1.id}"
 
@@ -96,7 +100,41 @@ RSpec.describe "pets show page", type: :feature do
     visit "/pets/#{@pet_2.id}"
 
     click_link "View All Applications"
- 
+
     expect(page).to have_content("No Applications For #{@pet_2.name}")
+  end
+
+  it "will not let me delete a pet if adoption status is approved" do
+    pet_12 = Pet.create(
+      image: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/golden-retriever-dog-royalty-free-image-505534037-1565105327.jpg",
+      name: "Todd",
+      description: "Funny",
+      age: 2,
+      sex: "Male",
+      adoption_status: "approved",
+      shelter: @shelter_1
+    )
+
+    visit "/pets/#{pet_12.id}"
+
+    expect(page).to have_content("Adoption Status: approved")
+    expect(page).to_not have_button("Delete Pet")
+  end
+
+  it "can be deleted from favorites when deleted from the database" do
+
+    visit "/pets/#{@pet_2.id}"
+    expect(page).to have_content("(0) Favorited Pets")
+
+    click_on "Favorite Pet"
+
+    expect(page).to have_content("(1) Favorited Pets")
+    expect(page).to have_link("Remove Pet From Favorites")
+
+    click_on "Delete Pet"
+
+    expect(current_path).to eq("/pets")
+    expect(page).to have_content("(0) Favorited Pets")
+    expect(page).to_not have_content("Nelly")
   end
 end

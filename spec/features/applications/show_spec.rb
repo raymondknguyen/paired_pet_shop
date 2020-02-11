@@ -44,7 +44,7 @@ RSpec.describe "application show page", type: :feature do
             zip: "80230",
             phone_number: "1234567890",
             description_why: "Because why not")
-    
+
     end
 
     it "sees application and its information" do
@@ -80,5 +80,3 @@ RSpec.describe "application show page", type: :feature do
     end
   end
 end
-
-
