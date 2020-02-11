@@ -1,3 +1,4 @@
+<center>
 <h1><%= @application.name %></h1>
 <p> Address: <%= @application.address %> </p>
 <p> City: <%= @application.city %> </p>
@@ -9,10 +10,15 @@
 <%= form_tag "/applications/#{@application.id}/pets/approve_all", method: :patch do %>
   <% @application.pets.each do |pet| %>
     <section id="favorite-<%=pet.id%>">
-      <%= check_box_tag 'favorite_pets[]', pet.id %>
       <%=link_to pet.name, "/pets/#{pet.id}" %>
-      <%= link_to "Approve", "/applications/#{@application.id}/pets/#{pet.id}/approve", method: :patch %>
+      <% if pet.adoption_status != "Approved" %>
+      <%= check_box_tag 'favorite_pets[]', pet.id %>
+       <%= link_to "Approve", "/applications/#{@application.id}/pets/#{pet.id}/approve", method: :patch %>
+       <% else %>
+       <p>Pet has been approved</p>
+      <% end %>
     </section>
   <% end %>
   <%= submit_tag "Approve All Checked" %>
 <% end %>
+</center>
