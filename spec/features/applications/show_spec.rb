@@ -65,14 +65,17 @@ RSpec.describe "application show page", type: :feature do
       expect(current_path).to eq("/pets/#{@pet_1.id}")
     end
 
-    it 'will show me a link to approve the application for that pet' do
+    it 'it can approve the application for that pet' do
 
         visit "/applications/#{@ray.id}"
 
+        expect(page).to have_content("#{@pet_1.name}")
+
         click_on 'Approve'
-        
+
         expect(current_path).to eq("/pets/#{@pet_1.id}")
-        expect(page).to have_content("pending")
+        @pet_1.reload
+        expect(@pet_1.adoption_status).to eq("Approved")
         expect(page).to have_content("On hold for #{@ray.name}")
     end
   end
