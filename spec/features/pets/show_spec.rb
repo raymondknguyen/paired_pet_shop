@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.describe "pets show page", type: :feature do
   before do
+    PetApplication.destroy_all
+    Pet.destroy_all
+    Shelter.destroy_all
+
     @shelter_1 = Shelter.create!(
       name: "Meg's Shelter",
       address: "150 Main Street",
@@ -115,5 +119,22 @@ RSpec.describe "pets show page", type: :feature do
 
     expect(page).to have_content("Adoption Status: approved")
     expect(page).to_not have_button("Delete Pet")
+  end
+
+  it "can be deleted from favorites when deleted from the database" do
+
+    visit "/pets/#{@pet_2.id}"
+    expect(page).to have_content("(0) Favorited Pets")
+
+    click_on "Favorite Pet"
+
+    expect(page).to have_content("(1) Favorited Pets")
+    expect(page).to have_link("Remove Pet From Favorites")
+
+    click_on "Delete Pet"
+
+    expect(current_path).to eq("/pets")
+    expect(page).to have_content("(0) Favorited Pets")
+    expect(page).to_not have_content("Nelly")
   end
 end
