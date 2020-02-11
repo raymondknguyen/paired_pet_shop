@@ -21,6 +21,15 @@ RSpec.describe "shelters index page", type: :feature do
                           state: "PA",
                           zip: 17033
                         )
+
+       @pet_1 = Pet.create(
+                          image: "https://image.shutterstock.com/image-photo/playing-dogs-garden-260nw-1556131820.jpg",
+                          name: "Fido",
+                          description: "Silly",
+                          age: 2,
+                          sex: "Female",
+                          shelter: @shelter_1
+    )
     end
 
     it "can see all the shelters avaiable" do
@@ -49,5 +58,13 @@ RSpec.describe "shelters index page", type: :feature do
     click_link(@shelter_2.name)
 
     expect(current_path).to eq("/shelters/#{@shelter_2.id}")
+
+    visit "/shelters/#{@shelter_1.id}"
+
+    expect(page).to have_link(@shelter_1.name)
+
+    visit "/pets/#{@pet_1.id}"
+
+    expect(page).to have_link(@shelter_1.name)
   end
 end
