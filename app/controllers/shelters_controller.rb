@@ -31,8 +31,14 @@ class SheltersController < ApplicationController
   end
 
   def destroy
-    Shelter.destroy(params[:id])
-
+    shelter = Shelter.find(params[:id])
+    if shelter.pets.any? do |pet|
+      pet.adoption_status = "pending"
+    end
+    flash[:error] = "Can not delete shelter with pending pet application"
+  else
+    shelter.destroy
+  end
     redirect_to '/shelters'
   end
 
