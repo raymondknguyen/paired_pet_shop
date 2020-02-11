@@ -73,7 +73,10 @@ RSpec.describe "favorites index page", type: :feature do
     end
 
     expect(current_path).to eq('/favorites')
-    expect(page).to_not have_link("#{@pet_1.name}")
+
+    within("#favoritepets") do
+      expect(page).to_not have_link("#{@pet_1.name}")
+    end
     expect(page).to_not have_css("img[src*='#{@pet_1.image}']")
     expect(page).to have_content("(2) Favorited Pets")
 
