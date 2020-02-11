@@ -37,4 +37,5 @@ Rails.application.routes.draw do
   get '/applications/:id', to: 'applications#show'
   patch 'applications/:application_id/pets/approve_all', to: 'applications#approve_all'
   patch '/applications/:application_id/pets/:pet_id/approve', to: 'applications#approve_pet'
+  patch '/applications/:application_id/pets/:pet_id/unapprove', to: 'applications#unapprove_pet'
 end
