@@ -135,10 +135,10 @@ RSpec.describe "application show page", type: :feature do
       within "#favorite-#{@pet_4.id}" do
         expect(page).to_not have_link("Approved")
         click_on "Unapprove"
+        @pet_4.reload
         expect(@pet_4.adoption_status).to eq("pending")
-        expect(page).to have_link("Approved")
       end
-    expect(current_path).to eq("/applications/#{@billy.id}")
+      expect(current_path).to eq("/applications/#{@billy.id}")
     end
   end
 end
