@@ -17,6 +17,15 @@ RSpec.describe "pets show page", type: :feature do
       sex: "Male",
       shelter: @shelter_1
     )
+    @pet_2 = Pet.create!(
+      image: "https://www.shutterstock.com/blog/wp-content/uploads/sites/5/2019/09/Dogs-portrait-3.jpg?w=750",
+      name: "Nelly",
+      description: "butthead",
+      age: 3,
+      sex: "Male",
+      adoption_status: "open",
+      shelter: @shelter_1)
+
     @ray = @pet_1.applications.create!(name: "Ray Nguyen",
             address: "123 Fake st.",
             city: "Denver",
@@ -24,7 +33,8 @@ RSpec.describe "pets show page", type: :feature do
             zip: "80230",
             phone_number: "1234567890",
             description_why: "Because why not")
-    @ray = @pet_1.applications.create!(name: "Billy",
+
+    @billy = @pet_1.applications.create!(name: "Billy",
             address: "800 Fakest Ave.",
             city: "Denver",
             state: "Colorado",
@@ -79,6 +89,14 @@ RSpec.describe "pets show page", type: :feature do
 
     click_on "Billy"
 
-    expect(current_path).to eq("/applications/#{@ray.id}")
+    expect(current_path).to eq("/applications/#{@billy.id}")
+  end
+
+  it "can see a message that there is no applications" do
+    visit "/pets/#{@pet_2.id}"
+
+    click_link "View All Applications"
+ 
+    expect(page).to have_content("No Applications For #{@pet_2.name}")
   end
 end
