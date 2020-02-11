@@ -59,7 +59,7 @@ RSpec.describe 'create pet page', type: :feature do
 
       click_on 'Create Pet'
 
-      expect(page).to have_content("Error, Missing Fields. Name")
+      expect(page).to have_content("Name can't be blank")
     end
   end
 end
