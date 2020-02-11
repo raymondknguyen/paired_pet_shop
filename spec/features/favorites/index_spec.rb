@@ -14,6 +14,7 @@ RSpec.describe "favorites index page", type: :feature do
         description: "Silly",
         age: 2,
         sex: "Female",
+        adoption_status: "open",
         shelter: @shelter_2
       )
       @pet_2 = Pet.create(
@@ -22,6 +23,7 @@ RSpec.describe "favorites index page", type: :feature do
         description: "butthead",
         age: 3,
         sex: "Male",
+        adoption_status: "open",
         shelter: @shelter_2
       )
       @pet_3 = Pet.create(
@@ -30,6 +32,7 @@ RSpec.describe "favorites index page", type: :feature do
         description: "Adorable",
         age: 4,
         sex: "Male",
+        adoption_status: "open",
         shelter: @shelter_2
       )
     end
@@ -55,6 +58,7 @@ RSpec.describe "favorites index page", type: :feature do
   end
 
   it "can remove a pet from the favorites page" do
+
     visit "/pets/#{@pet_1.id}"
     click_on "Favorite Pet"
 
@@ -72,8 +76,13 @@ RSpec.describe "favorites index page", type: :feature do
       click_on "Remove Pet From Favorites"
     end
 
+
     expect(current_path).to eq('/favorites')
-    expect(page).to_not have_link("#{@pet_1.name}")
+
+    within(".favoritepets") do
+      expect(page).to_not have_link("#{@pet_1.name}")
+    end
+
     expect(page).to_not have_css("img[src*='#{@pet_1.image}']")
     expect(page).to have_content("(2) Favorited Pets")
 
@@ -83,7 +92,10 @@ RSpec.describe "favorites index page", type: :feature do
     end
 
     expect(current_path).to eq('/favorites')
-    expect(page).to_not have_link("#{@pet_2.name}")
+    within(".favoritepets") do
+      expect(page).to_not have_link("#{@pet_2.name}")
+    end
+
     expect(page).to_not have_css("img[src*='#{@pet_2.image}']")
     expect(page).to have_content("(1) Favorited Pets")
   end

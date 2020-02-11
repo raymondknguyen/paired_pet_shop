@@ -6,15 +6,17 @@
 <% end %>
 
 <h2><%= link_to "Adopt My Favorite Pets", "/applications/new" %></h2>
-  <% @pets.each do |pet| %>
-  <section id = "favoritepet-<%=pet.id %>">
-    <h3><%= link_to "#{pet.name}", "/pets/#{pet.id}" %> </h3>
-    <br><br><br>
-    <img src ="<%= pet.image %>" alt="Dog Picture" height="400", width="500">
-    <br>
-    <%= button_to "Remove Pet From Favorites", "/favorites/#{pet.id}", method: :delete %>
+  <section class = "favoritepets">
+    <% @pets.each do |pet| %>
+      <section id = "favoritepet-<%=pet.id %>">
+        <h3><%= link_to "#{pet.name}", "/pets/#{pet.id}" %> </h3>
+        <br><br><br>
+        <img src ="<%= pet.image %>" alt="Dog Picture" height="400", width="500">
+        <br>
+        <%= button_to "Remove Pet From Favorites", "/favorites/#{pet.id}", method: :delete %>
+      </section>
+    <% end %>
   </section>
-  <% end %>
   <br><br>
 
 <section>
