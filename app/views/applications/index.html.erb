@@ -4,3 +4,6 @@
 	<% end %>
 <% end %>
 
+<% if @pet.applications == [] %>
+<p>No Applications For <%=@pet.name%></p>
+<% end %>
