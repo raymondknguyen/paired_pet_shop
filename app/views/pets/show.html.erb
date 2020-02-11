@@ -11,7 +11,11 @@
 
   <%= link_to 'Update Pet', "/pets/#{@pet.id}/edit" %>
   <br><br><br>
-  <%= button_to 'Delete Pet', "/pets/#{@pet.id}", method: :delete %>
+
+  <% if @pet.adoption_status != "approved" %>
+      <%= button_to 'Delete Pet', "/pets/#{@pet.id}", method: :delete %>
+  <% end %>
+  
   <br>
   <% if favorites.include_pet?(@pet) %>
     <%= link_to 'Remove Pet From Favorites', "/favorites/#{@pet.id}", method: :delete %>
