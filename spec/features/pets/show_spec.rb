@@ -104,7 +104,7 @@ RSpec.describe "pets show page", type: :feature do
     expect(page).to have_content("No Applications For #{@pet_2.name}")
   end
 
-  it "will not let me delete a pet if adoption status is pending" do
+  it "will not let me delete a pet if adoption status is approved" do
     pet_12 = Pet.create(
       image: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/golden-retriever-dog-royalty-free-image-505534037-1565105327.jpg",
       name: "Todd",
