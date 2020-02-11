@@ -53,7 +53,7 @@ require "rails_helper"
       visit "/shelters/#{@shelter_1.id}"
 
       expect(page).to have_button("Delete Shelter")
-      
+
       click_on "Delete Shelter"
 
       expect(current_path).to eq("/shelters")

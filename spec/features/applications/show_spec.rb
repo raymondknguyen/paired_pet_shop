@@ -45,7 +45,17 @@ RSpec.describe "application show page", type: :feature do
             phone_number: "1234567890",
             description_why: "Because why not")
 
-    end
+      @billy = @pet_2.applications.create!(name: "Billy",
+              address: "800 Fakest Ave.",
+              city: "Denver",
+              state: "Colorado",
+              zip: "80230",
+              phone_number: "1234567890",
+              description_why: "Because why not")
+
+              PetApplication.create(pet: @pet_3, application: @billy)
+
+            end
 
     it "sees application and its information" do
 
@@ -77,6 +87,27 @@ RSpec.describe "application show page", type: :feature do
         @pet_1.reload
         expect(@pet_1.adoption_status).to eq("Approved")
         expect(page).to have_content("On hold for #{@ray.name}")
+    end
+
+    it "can approve multiple pets from show page" do
+      
+      visit "/applications/#{@billy.id}"
+
+      within "#favorite-#{@pet_3.id}" do
+        check "favorite_pets[]"
+      end
+
+      within "#favorite-#{@pet_2.id}" do
+        check "favorite_pets[]"
+      end
+
+      click_on "Approve All Checked"
+
+       @pet_3.reload
+       @pet_2.reload
+
+      expect(@pet_3.adoption_status).to eq("Approved")
+      expect(@pet_2.adoption_status).to eq("Approved")
     end
   end
 end
