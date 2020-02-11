@@ -44,7 +44,7 @@ RSpec.describe "application show page", type: :feature do
             zip: "80230",
             phone_number: "1234567890",
             description_why: "Because why not")
-    
+
     end
 
     it "sees application and its information" do
@@ -70,12 +70,10 @@ RSpec.describe "application show page", type: :feature do
         visit "/applications/#{@ray.id}"
 
         click_on 'Approve'
-        
+
         expect(current_path).to eq("/pets/#{@pet_1.id}")
         expect(page).to have_content("pending")
         expect(page).to have_content("On hold for #{@ray.name}")
     end
   end
 end
-
-
