@@ -1,4 +1,9 @@
 class ApplicationsController < ApplicationController
+
+  def index
+    @pet = Pet.find(params[:id])
+  end
+
   def new
     pets = Pet.all
     @all_favs = pets.find_all do |pet|
