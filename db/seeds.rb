@@ -41,7 +41,7 @@ Pet.create!(
   shelter: shelter_1
 )
 
-Pet.create!(
+sammy = Pet.create!(
   image: "https://image.shutterstock.com/image-photo/dog-headshot-on-yellow-background-260nw-324936848.jpg",
   name: "Sammy",
   description: "Weird",
