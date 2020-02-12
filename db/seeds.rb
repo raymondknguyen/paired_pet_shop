@@ -47,7 +47,7 @@ Pet.create!(
   description: "Weird",
   age: 4,
   sex: "Male",
-  adoption_status: "pending",
+  adoption_status: "open",
   shelter: shelter_2
 )
 lucii = Pet.create!(
