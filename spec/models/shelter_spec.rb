@@ -108,6 +108,6 @@ RSpec.describe Shelter, type: :model do
         phone_number: "267385900",
         description_why: "Because dogs are awesome")
 
-    expect(shelter_1.application_count).to eq(2)
+        expect(shelter_1.application_count).to eq(2)
   end
 end

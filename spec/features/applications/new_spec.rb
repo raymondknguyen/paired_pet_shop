@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "applying for a pet index" do
+RSpec.describe "applying for a pet" do
   before :each do
     PetApplication.destroy_all
     Shelter.destroy_all
@@ -8,7 +8,7 @@ RSpec.describe "applying for a pet index" do
     Application.destroy_all
   end
 
-  it 'lets me apply for a pet that i have favorited' do
+  it 'lets me apply for a pet that I have favorited' do
     shelter_1 = Shelter.create!(
       name: "Mike's Shelter",
       address: "1331 17th Street",

@@ -1,4 +1,2 @@
 class PetAppliactions < ApplicationController
-  
-
 end

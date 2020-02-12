@@ -46,28 +46,30 @@ RSpec.describe "application show page", type: :feature do
         adoption_status: "Approved",
         shelter: @shelter_2
       )
-      @ray = @pet_1.applications.create!(name: "Ray Nguyen",
-            address: "123 Fake st.",
-            city: "Denver",
-            state: "Colorado",
-            zip: "80230",
-            phone_number: "1234567890",
-            description_why: "Because why not")
+      @ray = @pet_1.applications.create!(
+        name: "Ray Nguyen",
+        address: "123 Fake st.",
+        city: "Denver",
+        state: "Colorado",
+        zip: "80230",
+        phone_number: "1234567890",
+        description_why: "Because why not")
 
-      @billy = @pet_2.applications.create!(name: "Billy",
-              address: "800 Fakest Ave.",
-              city: "Denver",
-              state: "Colorado",
-              zip: "80230",
-              phone_number: "1234567890",
-              description_why: "Because why not")
+      @billy = @pet_2.applications.create!(
+        name: "Billy",
+        address: "800 Fakest Ave.",
+        city: "Denver",
+        state: "Colorado",
+        zip: "80230",
+        phone_number: "1234567890",
+        description_why: "Because why not")
 
-              PetApplication.create(pet: @pet_3, application: @billy)
-              PetApplication.create(pet: @pet_4, application: @billy)
+      PetApplication.create(pet: @pet_3, application: @billy)
+      PetApplication.create(pet: @pet_4, application: @billy)
 
-            end
+    end
 
-    it "sees application and its information" do
+    it "sees an applicant and its information" do
 
       visit "/applications/#{@ray.id}"
 
@@ -85,7 +87,7 @@ RSpec.describe "application show page", type: :feature do
       expect(current_path).to eq("/pets/#{@pet_1.id}")
     end
 
-    it 'it can approve the application for that pet' do
+    it 'can approve the application for that pet' do
 
         visit "/applications/#{@ray.id}"
 
@@ -120,7 +122,7 @@ RSpec.describe "application show page", type: :feature do
       expect(@pet_2.adoption_status).to eq("Approved")
     end
 
-    it "cant approve pet thats already been approved" do
+    it "cant approve a pet thats already been approved" do
       visit "/applications/#{@billy.id}"
 
       within "#favorite-#{@pet_4.id}" do
