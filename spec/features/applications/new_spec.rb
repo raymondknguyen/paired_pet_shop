@@ -16,7 +16,6 @@ RSpec.describe "applying for a pet" do
       state: "CO",
       zip: 80202
     )
-
     pet_1 = Pet.create(
       image: "https://image.shutterstock.com/image-photo/playing-dogs-garden-260nw-1556131820.jpg",
       name: "Fido",

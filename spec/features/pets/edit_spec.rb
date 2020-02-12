@@ -3,21 +3,21 @@ require 'rails_helper'
 RSpec.describe "pets edit page", type: :feature do
   it "can edit an individual pet" do
     shelter_1 = Shelter.create(
-                         name: "Mike's Shelter",
-                         address: "1331 17th Street",
-                         city: "Denver",
-                         state: "CO",
-                         zip: 80202
-                       )
+       name: "Mike's Shelter",
+       address: "1331 17th Street",
+       city: "Denver",
+       state: "CO",
+       zip: 80202
+      )
 
-    pet_1 = Pet.create!(
-                     image: "https://image.shutterstock.com/image-photo/playing-dogs-garden-260nw-1556131820.jpg",
-                     name: "Fido",
-                     description: "Silly",
-                     age: 2,
-                     sex: "Female",
-                     shelter: shelter_1
-                   )
+    pet_1 = Pet.create(
+       image: "https://image.shutterstock.com/image-photo/playing-dogs-garden-260nw-1556131820.jpg",
+       name: "Fido",
+       description: "Silly",
+       age: 2,
+       sex: "Female",
+       shelter: shelter_1
+      )
 
     visit "/pets/#{pet_1.id}/edit"
 
@@ -36,21 +36,21 @@ RSpec.describe "pets edit page", type: :feature do
 
   it "flashes an error message if a form is missing a field" do
     shelter_1 = Shelter.create(
-                         name: "Mike's Shelter",
-                         address: "1331 17th Street",
-                         city: "Denver",
-                         state: "CO",
-                         zip: 80202
-                       )
+         name: "Mike's Shelter",
+         address: "1331 17th Street",
+         city: "Denver",
+         state: "CO",
+         zip: 80202
+       )
 
     pet_1 = Pet.create!(
-                     image: "https://image.shutterstock.com/image-photo/playing-dogs-garden-260nw-1556131820.jpg",
-                     name: "Fido",
-                     description: "Silly",
-                     age: 2,
-                     sex: "Female",
-                     shelter: shelter_1
-                   )
+         image: "https://image.shutterstock.com/image-photo/playing-dogs-garden-260nw-1556131820.jpg",
+         name: "Fido",
+         description: "Silly",
+         age: 2,
+         sex: "Female",
+         shelter: shelter_1
+      )
 
     visit "/pets/#{pet_1.id}/edit"
 

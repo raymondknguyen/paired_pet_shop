@@ -13,9 +13,9 @@ class Shelter < ApplicationRecord
   end
 
   def application_count
-      Application
-      .joins(pets: [:shelter])
-      .where('shelters.id = ?', self.id)
-      .count('applications.id')
-    end
+    Application
+    .joins(pets: [:shelter])
+    .where('shelters.id = ?', self.id)
+    .count('applications.id')
+  end
 end

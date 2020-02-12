@@ -8,28 +8,29 @@ RSpec.describe "shelters index page", type: :feature do
       Pet.destroy_all
       Application.destroy_all
       @shelter_1 = Shelter.create(
-                         name: "Mike's Shelter",
-                         address: "1331 17th Street",
-                         city: "Denver",
-                         state: "CO",
-                         zip: 80202
-                       )
+         name: "Mike's Shelter",
+         address: "1331 17th Street",
+         city: "Denver",
+         state: "CO",
+         zip: 80202
+       )
+
       @shelter_2 = Shelter.create(
-                          name: "Meg's Shelter",
-                          address: "150 Main Street",
-                          city: "Hershey",
-                          state: "PA",
-                          zip: 17033
-                        )
+        name: "Meg's Shelter",
+        address: "150 Main Street",
+        city: "Hershey",
+        state: "PA",
+        zip: 17033
+      )
 
        @pet_1 = Pet.create(
-                          image: "https://image.shutterstock.com/image-photo/playing-dogs-garden-260nw-1556131820.jpg",
-                          name: "Fido",
-                          description: "Silly",
-                          age: 2,
-                          sex: "Female",
-                          shelter: @shelter_1
-    )
+        image: "https://image.shutterstock.com/image-photo/playing-dogs-garden-260nw-1556131820.jpg",
+        name: "Fido",
+        description: "Silly",
+        age: 2,
+        sex: "Female",
+        shelter: @shelter_1
+      )
     end
 
     it "can see all the shelters avaiable" do

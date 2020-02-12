@@ -63,6 +63,7 @@ RSpec.describe "pets show page", type: :feature do
   end
 
   it "can favorite a pet" do
+    
     visit "/pets/#{@pet_1.id}"
 
     click_on("Favorite Pet")

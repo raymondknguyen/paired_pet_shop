@@ -3,12 +3,14 @@ require "rails_helper"
   RSpec.describe "on the index page", type: :feature do
     describe "as a visitor" do
       before(:each) do
-        @shelter_1 = Shelter.create(name: "Denver Shelter",
-                                    address: "123 fake st.",
-                                    city: "Denver",
-                                    state: "CO",
-                                    zip: "80018")
+        @shelter_1 = Shelter.create(
+          name: "Denver Shelter",
+          address: "123 fake st.",
+          city: "Denver",
+          state: "CO",
+          zip: "80018")
       end
+
       it "can delete shelter" do
 
       visit "/shelters/#{@shelter_1.id}"
@@ -44,12 +46,14 @@ require "rails_helper"
     end
 
     it "deletes all reviews when a shelter has been deleted" do
-      review_1 = Review.create(title: "Awesome Shelter",
-                            rating: 5,
-                            content: "They were so helpful!",
-                            picture: "https://image.cnbcfm.com/api/v1/image/105992231-1561667465295gettyimages-521697453.jpeg?v=1561667497",
-                            shelter: @shelter_1
-                          )
+      review_1 = Review.create(
+        title: "Awesome Shelter",
+        rating: 5,
+        content: "They were so helpful!",
+        picture: "https://image.cnbcfm.com/api/v1/image/105992231-1561667465295gettyimages-521697453.jpeg?v=1561667497",
+        shelter: @shelter_1
+      )
+      
       visit "/shelters/#{@shelter_1.id}"
 
       expect(page).to have_button("Delete Shelter")

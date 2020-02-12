@@ -102,7 +102,7 @@ RSpec.describe "application show page", type: :feature do
     end
 
     it "can approve multiple pets from show page" do
-      
+
       visit "/applications/#{@billy.id}"
 
       within "#favorite-#{@pet_3.id}" do
@@ -134,12 +134,14 @@ RSpec.describe "application show page", type: :feature do
       visit "/applications/#{@billy.id}"
 
       expect(@pet_4.adoption_status).to eq("Approved")
+
       within "#favorite-#{@pet_4.id}" do
         expect(page).to_not have_link("Approved")
         click_on "Unapprove"
         @pet_4.reload
         expect(@pet_4.adoption_status).to eq("pending")
       end
+      
       expect(current_path).to eq("/applications/#{@billy.id}")
     end
   end

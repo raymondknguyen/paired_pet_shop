@@ -11,6 +11,7 @@ RSpec.describe "On shelter show page" do
         zip: 80202
       )
     end
+    
     it "can create a new review" do
       visit "/shelters/#{@shelter_1.id}"
 

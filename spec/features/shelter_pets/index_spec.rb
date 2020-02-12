@@ -34,7 +34,6 @@ RSpec.describe 'shelter pets index page', type: :feature do
       sex: "Male",
       shelter: shelter_1
     )
-
     pet_3 = Pet.create(
       image: "https://image.shutterstock.com/image-photo/dog-headshot-on-yellow-background-260nw-324936848.jpg",
       name: "Sammy",
