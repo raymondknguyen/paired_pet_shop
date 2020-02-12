@@ -1,14 +1,42 @@
 # Raymond Nguyen & Nathan Keller
 
 # Adopt Don't Shop Paired Project
+
 BE Mod 2 Week 2/3 Pair Project
-In this project Adopt Dont Shop, we handled; 
+
+## Project Description
+
+In this project Adopt Don't Shop, we handled;
 * Manually constructed a database with application interaction.
-* Creating quieries with PostGresSQL and ActiveRecord.
-* Utilizes resource relationships such as one to many and many to many with a rails framework.  
+* Creating queries with PostGresSQL and ActiveRecord.
+* Utilize's resource relationships such as one to many and many to many with a rails framework.  
 * Commit history shows Test Driven Development through RSpec; Cabybara, Shoulda Matchers, Launchy, Pry, SimpleCov.
 
+
+## Cloning this Repo
+
+* Click on Clone or download.
+* Copy the SHH key provided in the pop up box.
+* Open your terminal to the directory you wish to copy the repo
+* Type 'git clone' followed by the copied SSH key.
+* Enjoy
+
+## Link to Deployed Application on Heroku
+
+https://paired-pet-shop.herokuapp.com/
+
+## Link to contributor’s GitHub Profiles
+
+Raymond Nguyen
+https://github.com/itemniner
+
+Nathan Keller
+https://github.com/nkeller1
+
+
 ## Background and Description
+
+Please see GitHub Project board 'paired' for more information on the completed user stories for this project.
 
 "Adopt Don't Shop Paired" is a fictitious pet adoption platform where visitors can favorite pets and apply to adopt their newest furry friend.
 
