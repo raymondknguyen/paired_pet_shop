@@ -12,7 +12,7 @@
   <%= link_to 'Update Pet', "/pets/#{@pet.id}/edit" %>
   <br><br><br>
 
-  <% if @pet.adoption_status != "approved" %>
+  <% if @pet.adoption_status != "Approved" %>
       <%= button_to 'Delete Pet', "/pets/#{@pet.id}", method: :delete %>
   <% end %>
 
